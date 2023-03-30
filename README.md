@@ -44,3 +44,7 @@ Basic structure for starting a Flask web form project with Jinja templates
 - [ ] Submit records to database
 - [ ] Delete a record
 - [ ] Update a record
+
+Project Contributors:
+Joseph Beston
+Aadhar Agarwal

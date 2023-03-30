@@ -6,32 +6,24 @@ friends_dict = [
     {"name": "Test", "flavor": "swirl", "read": "yes", "activities": "reading"}
 ]
 
-
-@app.route("/", methods=["GET", "POST"])
+# Route for the homepage
+@app.route("/")
 def index():
-    return render_template(
-        "index.html", pageTitle="Web form template", friends=friends_dict
-    )
+    return render_template("index.html", pageTitle="Web form template", friends=friends_dict)
 
-
-@app.route("/add", methods=["POST"])
+# Route for adding a new friend
+@app.route("/add", methods=["GET", "POST"])
 def add():
-    print("inside add function")
     if request.method == "POST":
-
+        # Process the form data and add a new friend to the list
         form = request.form
 
         fname = form["fname"]
         flavor = form["flavor"]
         read = form["read"]
-        activities = form.getlist("activities")  # this is a PYthon list
+        activities = form.getlist("activities")
 
-        print(fname)
-        print(flavor)
-        print(read)
-        print(activities)
-
-        activities_string = ", ".join(activities)  # make the Python list into a string
+        activities_string = ", ".join(activities)
 
         friend_dict = {
             "name": fname,
@@ -40,15 +32,17 @@ def add():
             "activities": activities_string,
         }
 
-        print(friend_dict)
-        friends_dict.append(
-            friend_dict
-        )  # append this dictionary entry to the larger friends dictionary
-        print(friends_dict)
+        friends_dict.append(friend_dict)
+
         return redirect(url_for("index"))
     else:
-        return redirect(url_for("index"))
+        # Render the form template for GET requests
+        return render_template("add.html", pageTitle="Add a new friend")
 
+# Route for the about page
+@app.route("/about")
+def about():
+    return render_template("About.html", pageTitle="About Us")
 
 if __name__ == "__main__":
     app.run(debug=True)
