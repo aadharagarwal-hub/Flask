@@ -35,7 +35,7 @@ Basic structure for starting a Flask web form project with Jinja templates
 
 11. Create and change to a new local development branch `git checkout b pairing`
 
-12. Continued working with the project as we normally would.\
+12. Continued working with the project as we normally would.
 
 13. Completed the remaining steps.
 
