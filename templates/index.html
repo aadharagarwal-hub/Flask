@@ -1,112 +1,137 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block body %}
+<h2>Add a new friend</h2>
+<hr />
+<main>
+  <form action="/add" method="POST">
+    <div class="mb-3">
+      <label class="form-label" for="first-name">First name:</label>
+      <input
+        class="form-control"
+        type="text"
+        id="first-name"
+        name="fname"
+        autofocus="autofocus"
+        required
+      />
+    </div>
 
-{% block body %}
-  <h2>Digital Product Management - Web Form</h2>
+    <fieldset>
+      <legend>Favorite flavor of ice cream:</legend>
+      <select class="mb-3 form-select" name="flavor" id="ice-cream" required>
+        <option value="" selected>Choose one ...</option>
+        <option value="vanilla">Vanilla</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="swirl">Swirl</option>
+      </select>
+    </fieldset>
+
+
+    <fieldset>
+      <legend>Do you read for fun?</legend>
+      <div class="mb-3 form-check form-check-inline">
+        <label class="form-check-label" for="read-yes">
+        <input
+          type="radio"
+          id="read-yes"
+          name="read"
+          value="yes"
+          required="required"
+        />
+        Yes
+        </div>
+
+      <div class="mb-3 form-check form-check-inline">
+        <label class="form-check-label" for="read-no">
+        <input
+          type="radio"
+          id="read-no"
+          name="read"
+          value="no"
+          required="required"
+        />
+        No
+      </label>
+      </div>  
+    
+
+    <fieldset>
+      <legend>Choose your favorite activities</legend>
+            <div class="form-check">
+        <label class="form-check-label" for="for-running">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="for-running"
+          name="activities"
+          value="running"
+        />
+        Running
+      </label>
+      </div>  
+
+            <div class="form-check">
+        <label class="form-check-label" for="for-biking">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="for-biking"
+          name="activities"
+          value="biking"
+        />
+        Biking
+      </label>
+      </div>
+
+            <div class="form-check">
+        <label class="form-check-label" for="for-reading">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="for-reading"
+          name="activities"
+          value="reading"
+        />
+        Reading
+      </label>
+      </div>
+    </fieldset>
+
+   <div class="mt-3">
+      <input
+        class="btn btn-primary"
+        type="submit"
+        value="Add Book"
+        id="submit"
+      />
+    </div>
+
+  </form>
+
+ 
+  {% if friends %}
+  <h2  class="mt-5">Friend List</h2>
   <hr />
-  <main>
-    <form action="/add" method="POST">
-      <p>
-        <label for="first-name">First name:</label>
-        <input type="text" id="first-name" name="fname" />
-      </p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Favorite Ice Cream</th>
+        <th>Read for Fun</th>
+        <th>Favorite Activities</th>
+      </tr>
+    </thead>
 
-      <p>
-        <label for="ice-cream">
-          Favorite flavor of ice cream:
-          <select name="flavor" id="ice-cream" required>
-            <option value="" selected>Choose one ...</option>
-            <option value="vanilla">Vanilla</option>
-            <option value="chocolate">Chocolate</option>
-            <option value="swirl">Swirl</option>
-          </select>
-        </label>
-      </p>
-      <p>
-        <label>Do you read for fun?</label>
-        <label for="read-yes">
-          <input
-            type="radio"
-            id="read-yes"
-            name="read"
-            value="yes"
-            required="required"
-          />
-          Yes
-        </label>
-
-        <label for="read-no">
-          <input
-            type="radio"
-            id="read-no"
-            name="read"
-            value="no"
-            required="required"
-          />
-          No
-        </label>
-      </p>
-
-      <fieldset>
-        <legend>Choose your favorite activities</legend>
-        <label for="for-running">
-          <input
-            type="checkbox"
-            id="for-running"
-            name="activities"
-            value="running"
-          />
-          Running
-        </label>
-
-        <label for="for-biking">
-          <input
-            type="checkbox"
-            id="for-biking"
-            name="activities"
-            value="biking"
-          />
-          Biking
-        </label>
-
-        <label for="for-reading">
-          <input
-            type="checkbox"
-            id="for-reading"
-            name="activities"
-            value="reading"
-          />
-          Reading
-        </label>
-      </fieldset>
-
-      <p><input type="submit" id="submit" value="Submit" /></p>
-    </form>
-
-    <br /><br />
-    {% if friends %}
-      <h3>Friend List</h3>
-      <hr />
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Favorite Ice Cream</th>
-            <th>Read for Fun</th>
-            <th>Favorite Activities</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {% for friend in friends %}
-            <tr>
-              <td>{{ friend.name }}</td>
-              <td>{{ friend.flavor }}</td>
-              <td>{{ friend.read }}</td>
-              <td>{{ friend.activities }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    {% endif %}
-  </main>
+    <tbody>
+      {% for friend in friends %}
+      <tr>
+        <td>{{ friend.name }}</td>
+        <td>{{ friend.flavor }}</td>
+        <td>{{ friend.read }}</td>
+        <td>{{ friend.activities }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</main>
 {% endblock %}
