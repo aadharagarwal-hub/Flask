@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block body %}
+
+<hr />
+<main>
+  <div class="row">
+    <div class="col-4">
+      <img
+        class="img-fluid"
+        src="{{ url_for('static', filename='oh-no.png') }}"
+        alt="505 error page"
+      />
+    </div>
+    <div class="col-8">
+      <h2 class="mt-5">Something has gone very wrong!</h2>
+      <p>
+        We are very sorry, but something has gone wrong on our end. We have
+        logged the problem to let administrators know about it.
+      </p>
+    </div>
+  </div>
+</main>
+{% endblock %}
