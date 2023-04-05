@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block body %}
-<h2>Add a new friend</h2>
+<h2>Things you like</h2>
 <hr />
 <main>
   <form action="/add" method="POST">
@@ -16,12 +16,13 @@
     </div>
 
     <fieldset>
-      <legend>Favorite flavor of ice cream:</legend>
-      <select class="mb-3 form-select" name="flavor" id="ice-cream" required>
+      <legend>Favorite Sport:</legend>
+      <select class="mb-3 form-select" name="sport" id="sport" required>
         <option value="" selected>Choose one ...</option>
-        <option value="vanilla">Vanilla</option>
-        <option value="chocolate">Chocolate</option>
-        <option value="swirl">Swirl</option>
+        <option value="Football">Football</option>
+        <option value="Soccer">Soccer</option>
+        <option value="Baseball">Baseball</option>
+        <option value="Basketball">Basketball</option>
       </select>
     </fieldset>
 
@@ -100,7 +101,7 @@
       <input
         class="btn btn-primary"
         type="submit"
-        value="Add Book"
+        value="Add Activities"
         id="submit"
       />
     </div>
@@ -109,13 +110,13 @@
 
  
   {% if friends %}
-  <h2  class="mt-5">Friend List</h2>
+  <h2  class="mt-5">Friends List</h2>
   <hr />
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Name</th>
-        <th>Favorite Ice Cream</th>
+        <th>Favorite Sport</th>
         <th>Read for Fun</th>
         <th>Favorite Activities</th>
       </tr>
@@ -125,7 +126,7 @@
       {% for friend in friends %}
       <tr>
         <td>{{ friend.name }}</td>
-        <td>{{ friend.flavor }}</td>
+        <td>{{ friend.sport }}</td>
         <td>{{ friend.read }}</td>
         <td>{{ friend.activities }}</td>
       </tr>
