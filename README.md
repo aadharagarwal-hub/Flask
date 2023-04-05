@@ -41,6 +41,8 @@ Basic structure for starting a Flask web form project with Jinja templates
 
 14. Made an Azure website.
 
+15. Updated our website by adding bootstrap framework, flash, and error pages.
+
 
 Project Contributors:
 Joseph Beston
